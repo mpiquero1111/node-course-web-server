@@ -54,11 +54,18 @@ app.get('/about', function(request, response) {
   });//this points to the view\page\name.hbs
 });
 
-app.get('/bad',(req, res) => {
+//create a route or another page
+app.get('/proj', function(request, response) {
+  response.render('pages/proj', {
+    pageTitle: 'Project Page'
+  });//this points to the view\page\name.hbs
+});
+
+app.get('/bad',(request, response) => {
   //res.send('<h1>Hello Express bad page</h1>');
-  res.send({
-  response: "Big Problem",
-    page:"Home"
+  response.send({
+  error: "Big Problem",
+    number:"1"
   });
 });
 
