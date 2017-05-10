@@ -4,6 +4,9 @@ const fs = require('fs');
 var hbs = require('hbs');
 var app = express();
 
+//we need this for heroku to set port
+app.set('port', (process.env.PORT || 5000));
+
 //here we set express to use our html page
 app.use(express.static(__dirname + '/public'));
 //going to use this app.use to use middleware to log
@@ -59,6 +62,6 @@ app.get('/bad',(req, res) => {
   });
 });
 
-app.listen(3000, function() {
-  console.log('Node app is running on port', 3000);
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });
